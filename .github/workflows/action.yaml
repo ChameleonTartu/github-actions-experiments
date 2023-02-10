@@ -1,0 +1,23 @@
+name: experimental-action
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # Allow for running this manually.
+
+jobs:
+  build:
+    strategy:
+      max-parallel: 2
+      matrix:
+        apis: [['v1', '${{ vars.GCP.v1 }}', '${{ vars.GCP.v1.service-name }}'], ['v2', '${{ vars.GCP.v2 }}', '${{ vars.GCP.v2.service-name }}']]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: echo variables
+        env:
+          VERSION: ${{ matrix.apis[0] }}
+          CONTEXT: ${{ matrix.apis[1] }}
+          SERVICE: ${{ matrix.apis[2] }}
+        run: echo "$VERSION, $CONTEXT, $SERVICE"
