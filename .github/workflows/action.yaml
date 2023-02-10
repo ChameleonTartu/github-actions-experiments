@@ -21,8 +21,8 @@ jobs:
       - name: echo variables
         env:
           VERSION: ${{ matrix.apis[0] }}
-          STATUS: ${{ vars.GCP.v1.service-name }}
-          SERVICE: ${{ toJSON(vars.GCP.v2) }}
+          STATUS: ${{ matrix.apis[1] }}
+          SERVICE: ${{ vars.GCP.v1.service-name }}
         run: echo "$VERSION, $STATUS, $SERVICE"
       - name: echo context variables
-        run: echo '${{ toJSON(vars.GCP)[matrix.apis[0]] }}'        
+        run: echo '${{ vars.GCP }}'        
