@@ -11,13 +11,13 @@ jobs:
     strategy:
       max-parallel: 2
       matrix:
-        apis: [['v1', '${{ vars.GCP.v1 }}', '${{ vars.GCP.v1.service-name }}'], ['v2', '${{ vars.GCP.v2 }}', '${{ vars.GCP.v2.service-name }}']]
+        apis: [['v1', '${{ vars.GCP.v1.status }}', '${{ vars.GCP.v1.service-name }}'], ['v2', '${{ vars.GCP.v2.status }}', '${{ vars.GCP.v2.service-name }}']]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
       - name: echo variables
         env:
           VERSION: ${{ matrix.apis[0] }}
-          CONTEXT: ${{ matrix.apis[1] }}
+          STATUS: ${{ matrix.apis[1] }}
           SERVICE: ${{ matrix.apis[2] }}
-        run: echo "$VERSION, $CONTEXT, $SERVICE"
+        run: echo "$VERSION, $STATUS, $SERVICE"
