@@ -22,5 +22,5 @@ jobs:
         env:
           VERSION: ${{ matrix.apis[0] }}
           STATUS: ${{ vars.GCP.v1.service-name }}
-          SERVICE: 'test' # ${{ vars.GCP.v2 }}
+          SERVICE: ${{ toJSON(vars.GCP.v2) }}
         run: echo "$VERSION, $STATUS, $SERVICE"
