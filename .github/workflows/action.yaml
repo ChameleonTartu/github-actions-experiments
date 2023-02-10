@@ -18,6 +18,6 @@ jobs:
       - name: echo variables
         env:
           VERSION: ${{ matrix.apis[0] }}
-          STATUS: ${{ vars.GCP['v1'] }}
-          SERVICE: ${{ vars.GCP[matrix.apis[0]] }}
+          STATUS: ${{ vars.GCP.v1.service-name }}
+          SERVICE: ${{ vars.GCP.v2 }}
         run: echo "$VERSION, $STATUS, $SERVICE"
