@@ -24,3 +24,5 @@ jobs:
           STATUS: ${{ vars.GCP.v1.service-name }}
           SERVICE: ${{ toJSON(vars.GCP.v2) }}
         run: echo "$VERSION, $STATUS, $SERVICE"
+      - name: echo context variables
+        run: echo '${{ vars }}'        
