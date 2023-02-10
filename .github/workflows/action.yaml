@@ -5,6 +5,9 @@ on:
     branches:
       - main
   workflow_dispatch: # Allow for running this manually.
+env:
+  # Setting an environment variable with the value of a configuration variable
+  env_var: ${{ vars.ENV_CONTEXT_VAR }}
 
 jobs:
   build:
